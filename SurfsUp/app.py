@@ -24,7 +24,6 @@ app = Flask(__name__)
 @app.route("/")
 def home():
 	return ("Weather API!<br><br>"
-		f"Available Routes:<br>"
 		f"/api/v1.0/precipitation<br>"
 		f"/api/v1.0/stationn<br>"
 		f"/api/v1.0/tobs<br>"
@@ -82,7 +81,7 @@ def single_date(start):
 def trip_dates(start,end):
 	Start_Date = dt.datetime.strptime(start,"%Y-%m-%d")
 	End_Date = dt.datetime.strptime(end,"%Y-%m-%d")
-	summary_stats = session.query(func.min(measurement.tobs),func.max(measurement.tobs),func.round(func.avg(measurement.tobs))).\
+	summary_stats = session.query(func.min(measurement.tobs),func.avg(measurement.tobs),func.round(func.max(measurement.tobs))).\
 	filter(measurement.date.between(Start_Date,End_Date)).all()
 	
 	session.close()    
