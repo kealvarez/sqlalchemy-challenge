@@ -38,14 +38,14 @@ def precipitation():
 	session.close()
 
 
-	year_prcp = []
+	prcp = []
 	for result in results:
-		year_prcp_dict = {}
-		year_prcp_dict["date"] = result.date
-		year_prcp_dict["prcp"] = result.prcp
-		year_prcp.append(year_prcp_dict)
+		prcp = {}
+		prcp["date"] = result.date
+		prcp["prcp"] = result.prcp
+		prcp.append(prcp)
 	
-	return jsonify(year_prcp)
+	return jsonify(prcp)
 
 @app.route("/api/v1.0/stations")
 def stations():
