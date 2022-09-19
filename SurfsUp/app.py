@@ -79,7 +79,7 @@ def single_date(start):
 
 
 @app.route("/api/v1.0/<start>/<end>")
-def trip_dates(start,end):
+def trip_dates(end):
 	Start_Date = dt.datetime.strptime(start,"%Y-%m-%d")
 	End_Date = dt.datetime.strptime(end,"%Y-%m-%d")
 	summary_stats = session.query(func.min(measurement.tobs),func.avg(measurement.tobs),func.round(func.max(measurement.tobs))).\
